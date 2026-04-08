@@ -145,13 +145,13 @@
             <div class="product-card">
                 <div class="img-container"><img src="https://i.ibb.co/wZKyhZ9k/618nt-YPFSL-AC-AIweblab1006854-T4-FMavif-SF1050-1050-PQ64.avif" class="product-img"></div>
                 <div class="product-title">Apple 20W USB-C Power Adapter</div>
-                <div class="price">₹1799</div>
+                <div class="price">₹699</div>
                 <a href="https://www.amazon.in/dp/B08L5V9BHG/?tag=avgo08-21" target="_blank" class="buy-btn">View Deal</a>
             </div>
             <div class="product-card">
                 <div class="img-container"><img src="https://i.ibb.co/LXb1ZkVw/61b-B-v8q-Jq-L-AC-AIweblab1006854-T4-FMavif-SF1050-1050-PQ64.avif" class="product-img"></div>
                 <div class="product-title">Samsung Original 25W Travel Adapter</div>
-                <div class="price">₹1299</div>
+                <div class="price">₹979</div>
                 <a href="https://www.amazon.in/dp/B08V59799G/?tag=avgo08-21" target="_blank" class="buy-btn">View Deal</a>
             </div>
         </div>
@@ -215,3 +215,4 @@
     </script>
 </body>
 </html>
+
