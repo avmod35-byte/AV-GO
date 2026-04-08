@@ -13,11 +13,11 @@
         .search-container { position: relative; margin-top: 10px; }
         .search-bar { width: 92%; background: #f3f4f6; padding: 12px 4%; border-radius: 10px; color: #333; border: 1px solid #eee; outline: none; font-size: 14px; }
 
-        /* Category Home Grid - UPDATED ICON SIZES */
+        /* Category Home Grid */
         .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 20px; }
         .cat-card { text-align: center; cursor: pointer; text-decoration: none; color: inherit; }
         .icon-box { 
-            height: 110px; /* Increased from 90px */
+            height: 110px; 
             border-radius: 25px; 
             display: flex; 
             align-items: center; 
@@ -25,7 +25,7 @@
             margin-bottom: 8px; 
             border: 1px solid #eee; 
             transition: 0.2s;
-            font-size: 45px; /* Increased emoji size */
+            font-size: 45px; 
         }
 
         /* Category Page Styles */
@@ -43,7 +43,8 @@
         .price { font-size: 16px; font-weight: 800; color: #000; margin: 4px 0; text-align: left; }
         .buy-btn { display: block; background: #FFD814; color: black; text-align: center; padding: 8px; text-decoration: none; border-radius: 8px; font-size: 11px; font-weight: bold; border: 1px solid #FCD200; }
         
-        .footer-msg { text-align: center; padding: 30px 20px; color: #666; font-size: 13px; font-weight: 600; border-top: 1px solid #eee; margin-top: 20px; line-height: 1.5; }
+        .footer-msg { text-align: center; padding: 20px 20px 5px 20px; color: #666; font-size: 13px; font-weight: 600; border-top: 1px solid #eee; margin-top: 20px; line-height: 1.5; }
+        .disclaimer { text-align: center; padding: 0 20px 30px 20px; color: #999; font-size: 10px; font-style: italic; line-height: 1.4; }
     </style>
 </head>
 <body>
@@ -73,7 +74,8 @@
                 <p style="font-size: 11px; font-weight: 600;">Games</p>
             </div>
         </div>
-        <div class="footer-msg">Press view deal and brouse all of our products</div>
+        <div class="footer-msg">Press view deal and browse all of our products</div>
+        <div class="disclaimer">As an Amazon Associate I earn from qualifying purchases.</div>
     </div>
 
     <div id="electronics-page" class="hidden">
@@ -85,6 +87,7 @@
         <div class="tabs">
             <div id="tab-cables" class="tab active-tab" onclick="showSubCat('cables')">Cables</div>
             <div id="tab-chargers" class="tab" onclick="showSubCat('chargers')">Chargers</div>
+            <div id="tab-audio" class="tab" onclick="showSubCat('audio')">Audio</div>
         </div>
         
         <div id="sec-cables" class="product-grid">
@@ -124,36 +127,68 @@
             <div class="product-card">
                 <div class="img-container"><img src="https://i.ibb.co/JRhc5c77/4109y-UIu2s-L-MCnd-AC.jpg" class="product-img"></div>
                 <div class="product-title">Portronics Adapto 20 Type C Fast Charger</div>
-                <div class="price">₹449</div>
+                <div class="price">₹249</div>
                 <a href="https://www.amazon.in/dp/B09NJKMYVC/?tag=avgo08-21" target="_blank" class="buy-btn">View Deal</a>
             </div>
             <div class="product-card">
-                <div class="img-container"><img src="https://i.ibb.co/1YqJf0hH/216-RQn6-Mvr-L-MCnd-AC.jpg" class="product-img"></div>
+                <div class="img-container"><img src="https://i.ibb.co/xqBqQ9RF/31thq-OHab-EL-MCnd-AC.jpg" class="product-img"></div>
                 <div class="product-title">Ambrane 20W Fast Charging Wall Adaptor</div>
                 <div class="price">₹349</div>
                 <a href="https://www.amazon.in/dp/B0BBRJVLWD/?tag=avgo08-21" target="_blank" class="buy-btn">View Deal</a>
             </div>
             <div class="product-card">
-                <div class="img-container"><img src="https://i.ibb.co/xqBqQ9RF/31thq-OHab-EL-MCnd-AC.jpg" class="product-img"></div>
+                <div class="img-container"><img src="https://i.ibb.co/1YqJf0hH/216-RQn6-Mvr-L-MCnd-AC.jpg" class="product-img"></div>
                 <div class="product-title">Mi 33W SonicCharge 2.0 Fast Charger</div>
-                <div class="price">₹699</div>
+                <div class="price">₹299</div>
                 <a href="https://www.amazon.in/dp/B0FQ5NFDML/?tag=avgo08-21" target="_blank" class="buy-btn">View Deal</a>
             </div>
+            <div class="product-card">
+                <div class="img-container"><img src="https://i.ibb.co/wZKyhZ9k/618nt-YPFSL-AC-AIweblab1006854-T4-FMavif-SF1050-1050-PQ64.avif" class="product-img"></div>
+                <div class="product-title">Apple 20W USB-C Power Adapter</div>
+                <div class="price">₹1799</div>
+                <a href="https://www.amazon.in/dp/B08L5V9BHG/?tag=avgo08-21" target="_blank" class="buy-btn">View Deal</a>
+            </div>
+            <div class="product-card">
+                <div class="img-container"><img src="https://i.ibb.co/LXb1ZkVw/61b-B-v8q-Jq-L-AC-AIweblab1006854-T4-FMavif-SF1050-1050-PQ64.avif" class="product-img"></div>
+                <div class="product-title">Samsung Original 25W Travel Adapter</div>
+                <div class="price">₹1299</div>
+                <a href="https://www.amazon.in/dp/B08V59799G/?tag=avgo08-21" target="_blank" class="buy-btn">View Deal</a>
+            </div>
         </div>
-        
-        <div class="footer-msg">Press view deal and brouse all of our products</div>
+
+        <div id="sec-audio" class="product-grid hidden">
+            <div class="product-card">
+                <div class="img-container"><img src="https://i.ibb.co/B2XwCrgz/61t-PIj-Dh-KSL-AC-AIweblab1006854-T4-FMavif-SF1050-1050-PQ64.avif" class="product-img"></div>
+                <div class="product-title">Boult Audio Z40 Pro with 100H Playtime</div>
+                <div class="price">₹1119</div>
+                <a href="https://www.amazon.in/dp/B0F1CYD5PS/?tag=avgo08-21" target="_blank" class="buy-btn">View Deal</a>
+            </div>
+            <div class="product-card">
+                <div class="img-container"><img src="https://i.ibb.co/v6ZCd6T0/71nfveeqr-GL-AC-AIweblab1006854-T4-FMavif-SF1050-1050-PQ64.avif" class="product-img"></div>
+                <div class="product-title">boAt Airdopes 141 ANC TWS Earbuds</div>
+                <div class="price">₹1119</div>
+                <a href="https://www.amazon.in/dp/B0GK22XD58/?tag=avgo08-21" target="_blank" class="buy-btn">View Deal</a>
+            </div>
+            <div class="product-card">
+                <div class="img-container"><img src="https://i.ibb.co/TD7cnsSQ/71-Zisjn-Ww-HL-AC-AIweblab1006854-T4-FMavif-SF1050-1050-PQ64.avif" class="product-img"></div>
+                <div class="product-title">Noise Buds VS102 Plus with 70H Playtime</div>
+                <div class="price">₹1109</div>
+                <a href="https://www.amazon.in/dp/B0FDKSMKPP/?tag=avgo08-21" target="_blank" class="buy-btn">View Deal</a>
+            </div>
+        </div>
+
+        <div class="footer-msg">Press view deal and browse all of our products</div>
+        <div class="disclaimer">As an Amazon Associate I earn from qualifying purchases.</div>
     </div>
 
     <div id="clothes-page" class="hidden">
         <div class="page-header" style="background: #2d3436;"><div onclick="switchPage('home-page')" style="color: #ffc107; font-size: 24px; cursor: pointer;">←</div><div style="font-weight: bold;">Clothes</div></div>
         <div style="text-align: center; padding: 50px 20px; color: #888;">🛍️ Coming Soon</div>
-        <div class="footer-msg">Press view deal and brouse all of our products</div>
     </div>
 
     <div id="games-page" class="hidden">
         <div class="page-header" style="background: #5d4037;"><div onclick="switchPage('home-page')" style="color: #ffc107; font-size: 24px; cursor: pointer;">←</div><div style="font-weight: bold;">Games</div></div>
         <div style="text-align: center; padding: 50px 20px; color: #888;">🎲 Coming Soon</div>
-        <div class="footer-msg">Press view deal and brouse all of our products</div>
     </div>
 
     <script>
@@ -169,8 +204,10 @@
         function showSubCat(cat) {
             document.getElementById('sec-cables').classList.add('hidden');
             document.getElementById('sec-chargers').classList.add('hidden');
+            document.getElementById('sec-audio').classList.add('hidden');
             document.getElementById('tab-cables').classList.remove('active-tab');
             document.getElementById('tab-chargers').classList.remove('active-tab');
+            document.getElementById('tab-audio').classList.remove('active-tab');
             
             document.getElementById('sec-' + cat).classList.remove('hidden');
             document.getElementById('tab-' + cat).classList.add('active-tab');
