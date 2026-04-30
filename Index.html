@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AV-GO | Car Edit AI</title>
+    <script src="coi-serviceworker.js"></script>
+    <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            margin: 0;
+        }
+        .app-card {
+            max-width: 500px;
+            width: 90%;
+            background: #161616;
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px solid #333;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+            text-align: center;
+        }
+        h1 { color: #007bff; letter-spacing: -1px; margin-bottom: 5px; }
+        p { color: #888; font-size: 14px; margin-bottom: 25px; }
+        
+        .input-group {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+        label { display: block; margin-bottom: 8px; font-size: 12px; font-weight: bold; color: #aaa; text-transform: uppercase; }
+        input {
+            width: 100%;
+            background: #222;
+            border: 1px solid #444;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+        
+        #render-btn {
+            width: 100%;
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 18px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.2s;
+        }
+        #render-btn:disabled { background: #333; color: #666; }
+
+        /* Progress Bar */
+        #loader-box { display: none; margin-top: 20px; }
+        .bar-bg { width: 100%; background: #333; height: 8px; border-radius: 10px; overflow: hidden; }
+        .bar-fill { width: 0%; height: 100%; background: #007bff; transition: width 0.3s; }
+        #status-txt { font-size: 13px; margin-top: 10px; color: #007bff; font-weight: bold; }
+
+        video { width: 100%; border-radius: 12px; margin-top: 20px; border: 1px solid #333; display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="app-card">
+        <h1>AV-GO AI</h1>
+        <p>Cinematic Car Editor (4K Auto-Render)</p>
+
+        <div class="input-group">
+            <label>Raw Footage (MP4)</label>
+            <input type="file" id="vid-in" accept="video/*">
+        </div>
+
+        <div class="input-group">
+            <label>Edit Music (MP3)</label>
+            <input type="file" id="aud-in" accept="audio/*">
+        </div>
+
+        <button id="render-btn">START AUTO-EDIT</button>
+
+        <div id="loader-box">
+            <div class="bar-bg"><div class="bar-fill" id="fill"></div></div>
+            <div id="status-txt">Preparing Engine...</div>
+        </div>
+
+        <video id="out-vid" controls></video>
+    </div>
+
+    <script>
+        const { createFFmpeg, fetchFile } = FFmpeg;
+        const ffmpeg = createFFmpeg({ log: true });
+
+        const btn = document.getElementById('render-btn');
+        const status = document.getElementById('status-txt');
+        const fill = document.getElementById('fill');
+        const loader = document.getElementById('loader-box');
+        const player = document.getElementById('out-vid');
+
+        ffmpeg.setProgress(({ ratio }) => {
+            const pct = Math.round(ratio * 100);
+            fill.style.width = pct + '%';
+            status.innerText = `Rendering 4K: ${pct}%`;
+        });
+
+        btn.onclick = async () => {
+            const v = document.getElementById('vid-in').files[0];
+            const a = document.getElementById('aud-in').files[0];
+            if (!v || !a) return alert("Upload video and music first!");
+
+            btn.disabled = true;
+            loader.style.display = 'block';
+
+            if (!ffmpeg.isLoaded()) await ffmpeg.load();
+
+            status.innerText = "Processing Car Paint & Reflections...";
+            ffmpeg.FS('writeFile', 'v.mp4', await fetchFile(v));
+            ffmpeg.FS('writeFile', 'a.mp3', await fetchFile(a));
+
+            // PRO CAR FILTERS: Boosts contrast and saturation for glossy paint
+            await ffmpeg.run(
+                '-i', 'v.mp4', '-i', 'a.mp3',
+                '-vf', 'eq=contrast=1.4:saturation=1.7:brightness=-0.05',
+                '-c:v', 'libx264', '-crf', '18', '-map', '0:v:0', '-map', '1:a:0', '-shortest', 'final.mp4'
+            );
+
+            const data = ffmpeg.FS('readFile', 'final.mp4');
+            player.src = URL.createObjectURL(new Blob([data.buffer], { type: 'video/mp4' }));
+            player.style.display = 'block';
+            status.innerText = "EDIT COMPLETE!";
+            btn.disabled = false;
+        };
+    </script>
+</body>
+</html>
